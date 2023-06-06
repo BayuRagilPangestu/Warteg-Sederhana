@@ -1,0 +1,843 @@
+:root{
+    --black-color: black;
+    --orange-color: #ff9100;
+    --gray-color: #858585;
+    --navy-color: #3C486B;
+    --white-color: #fff;
+    --red-color: #DA3422;
+}
+*{
+    font-family: 'Saira', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    font-family: 'Saira', sans-serif;
+    background-color: var(--navy-color);
+    color: var(--white-color);
+    min-height: 3000px;
+}
+
+
+/* Navbar */
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.4rem 7%;
+    background-color: var(--navy-color);
+    border-bottom: 1px solid var(--orange-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+}
+.navbar img{
+    float: left;
+	height: 50px;
+    cursor: pointer;
+}
+.navbar .navbar-logo{
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #fff;
+    font-style: italic;
+    margin-left: 4px;
+    margin-right: auto;
+}
+.navbar .navbar-logo span{
+    color: var(--orange-color);
+}
+.navbar .navbar-nav{
+    margin-right: 15rem;
+}
+.navbar .navbar-nav a{
+    color: var(--white-color);
+    display: inline-block;
+    font-size: 1.3rem;
+    margin: 0 2rem;
+}
+.navbar .navbar-nav a:hover{
+    color: var(--orange-color);
+}
+.navbar .navbar-nav a::after{
+    content: '';
+    display: block;
+    padding-bottom: 0.1rem solid var(--orange-color);
+    border-bottom: 0.5rem;
+    transform: scaleX(0);
+    transition: 0.2rem;
+}
+.navbar .navbar-nav a:hover::after{
+    transform: scaleX(0.5);
+}
+.navbar-icon{
+    margin-top: 0.8rem;
+}
+.navbar .navbar-icon a{
+    color: var(--white-color);
+    margin: 0 0.8rem;
+}
+.navbar .navbar-icon a:hover{
+    color: var(--orange-color);
+}
+#menu-bar{
+    display: none;
+}
+
+/* Media Queries */
+/* Laptop */
+@media (max-width: 1366px){
+    html{
+        font-size: 75%;
+    }
+}
+
+/* TABLET */
+@media (max-width: 768px){
+    html{
+        font-size: 62.5%;
+    }
+    #menu-bar{
+        display: inline-block;
+    }
+    .navbar .navbar-nav{
+        position: absolute;
+        top: 100%;
+        right: -100%;
+        background: #fff;
+        width: 30rem;
+        height: 100vh;
+        transition: 0.3s;
+    }
+    .navbar .navbar-nav.active{
+        right: 0;
+    }
+    .navbar .navbar-nav a{
+        color: var(--navy-color);
+        display: block;
+        margin: 1.5rem;
+        padding: 0.5rem;
+        font-size: 2rem;
+    }
+    .navbar .navbar-nav a::after{
+        transform-origin: 0 0;
+    }
+    .navbar .navbar-nav a:hover::after{
+        transform: scaleX(0.2);
+    }
+    .tentang .row{
+        flex-wrap: wrap;
+    }
+    .tentang .row .tentang-img img{
+        height: 24rem;
+        object-fit: cover;
+        object-position: center;
+    }
+    .tentang .row .content{
+        padding: 0;
+    }
+    .tentang .row .content h3{
+        margin-top: 1rem;
+        font-size: 2rem;
+    }
+    .tentang .row .content p{
+        font-size: 1.6rem;
+    }
+    .kontak .row .map{
+        height: 30rem;
+    }
+    .kontak .row form{
+        padding-top: 0;
+    }
+}
+
+/* HP */
+@media (max-width: 450px){
+    html{
+    font-size: 55%;
+    }
+}
+
+
+/* Home */
+.slides{
+    width: 100%;
+    position: relative;
+}
+.slides .slide{
+    display: none;
+}
+.slides .slide img{
+    width: 100%;
+    margin-top: 5rem;
+    animation-name: fade;
+    animation-duration: 1.5s;
+    height: 635px;
+}
+.slides .navigation{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.slides .navigation .prev, 
+.slides .navigation .next{
+    cursor: pointer;
+    padding: 16px;
+    font-weight: 500;
+    font-size: 20px;
+    color: var(--white-color);
+    background: var(--gray-color);
+    user-select: none;
+    transition: 0.6s ease;
+}
+.slides .navigation .prev:hover, 
+.slides .navigation .next:hover{
+    background: var(--black-color);
+}
+@keyframes fade{
+    from{opacity: 0.3;}
+    to{opacity: 1;}
+}
+@media (max-width: 992px){
+    .slides .navigation .prev, .slides .navigation .next{
+        font-size: 18px;
+        padding: 13px;
+    }
+}
+@media (max-width: 768px){
+    .slides .navigation .prev, .slides .navigation .next{
+        font-size: 15px;
+        padding: 10px;
+    }
+}
+@media (max-width: 576px){
+    .slides .navigation .prev, .slides .navigation .next{
+        font-size: 12px;
+        padding: 1px;
+    }
+}
+@media (max-width: 360px){
+    .slides .navigation .prev, .slides .navigation .next{
+        font-size: 11px;
+        padding: 6px;
+    }
+}
+
+
+/* Reservasi */
+#reservasi{
+    padding: 7.2rem 4.5rem;
+    justify-content: flex-start;
+    position: relative;
+    display: flex;
+}
+
+/* Booking */
+.booking{
+    width: 40%;
+    font-weight: 800;
+    background-color: var(--orange-color);
+    padding: 30px 30px 30px 30px;
+}
+.booking span{
+    font-size: 30px;
+    color: var(--navy-color);
+    margin-bottom: 20px;
+}
+.booking h2{
+    font-size: 30px;
+    color: var(--white-color);
+    line-height: 0.8;
+    font-weight: 500;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.booking form input, 
+.booking form textarea{
+    width: 100%;
+    background-color: transparent;
+    outline: none;
+    border: 1px solid var(--white-color);
+    padding: 12px 10px;
+    font-size: 16px;
+    color-scheme: dark;
+    margin-bottom: 10px;
+}
+.booking form input::placeholder,
+.booking form textarea::placeholder{
+    color: var(--white-color);
+    font-weight: 500;
+}
+.booking form textarea{
+    resize: vertical;
+    overflow: hidden;
+    min-height: 2rem;
+}
+.btn1{
+    display: inline-block;
+    background-color: var(--navy-color);
+    border: 1px solid var(--white-color);
+    color: var(--white-color);
+    width: 100%;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 20px 30px;
+    margin-top: 10px;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+}
+.btn1:hover{
+    background-color: var(--orange-color);
+    color: var(--white-color);
+}
+
+/* Reservasi Text */
+#reservasi .text-wrapper{
+    padding: 75px 40px;
+    width: 50%;
+    justify-content: center;
+}
+#reservasi .text-wrapper h1{
+    font-size: 60px;
+    font-style: italic;
+    height: 130px;
+    padding-top: 5rem;
+}
+#reservasi .text-wrapper h1 span{
+    color: var(--orange-color);
+}
+#reservasi .text-wrapper h2{
+    font-size: 30px;
+    font-weight: 600;
+    margin: 5px 0;
+    color: var(--white-color);
+    padding-top: 4rem;
+}
+#reservasi .text-wrapper h3{
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--white-color);
+    height: 60px;
+    padding-top: 1rem;
+}
+
+@media (max-width: 13660px){
+    .booking{
+        width: 50%;
+        margin-bottom: 20px;
+    }
+    .booking h2{ 
+        font-size: 40px;
+    }
+    .booking h2 span{
+        font-size: 40px;
+    }
+    #reservasi .text-wrapper h1{
+        font-size: 50px;
+    }
+    #reservasi .text-wrapper h2{
+        font-size: 24px;
+    }
+    #reservasi .text-wrapper h3{
+        font-size: 18px;
+    }
+}
+@media (max-width: 950px){
+    #reservasi .text-wrapper h2{
+        font-size: 25px;
+    }
+    #reservasi .text-wrapper h3{
+        font-size: 16px;
+    }
+    .booking h2{ 
+        font-size: 38px;
+    }
+    .booking h2 span{
+        font-size: 38px;
+    }
+}
+@media (max-width: 860px){
+    #reservasi .text-wrapper h1{
+        font-size: 50px;
+    }
+    #reservasi .text-wrapper h2{
+        font-size: 24px;
+    }
+    #reservasi .text-wrapper h3{
+        font-size: 18px;
+    }
+    .booking{
+        justify-content: center;
+        width: 100%;
+        align-items: center;
+    }
+    .booking h2{ 
+        font-size: 35px;
+    }
+    .booking h2 span{
+        font-size: 35px;
+    }
+}
+@media (max-width: 780px){
+    .booking{
+        justify-content: center;
+        width: 60%;
+        align-items: center;
+    }
+    #reservasi .text-wrapper h1{
+        font-size: 40px;
+        margin-top: 100px;
+        margin-left: 10px;
+    }
+    #reservasi .text-wrapper h2{
+        font-size: 20px;
+        margin-left: 10px;
+    }
+    #reservasi .text-wrapper h3{
+        font-size: 15px;
+        margin-left: 10px;
+    }
+    .booking h2{ 
+        font-size: 35px;
+    }
+    .booking h2 span{
+        font-size: 35px;
+    }
+    #reservasi .text-wrapper{
+        padding: 0;
+        width: 50%;
+    }
+}
+
+
+/* Menu */
+.menu{
+    padding: 7rem 7% 1.4rem;
+}
+.menu h2{
+    text-align: center;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+.menu h2 span{
+    color: var(--orange-color);
+}
+.menu h4{
+    font-size: 2.5rem;
+    text-align: center;
+    color: var(--orange-color);
+}
+.menu h3{
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+.menu p{
+    text-align: center;
+    max-width: 30rem;
+    margin: auto;
+    font-weight: 500;
+    line-height: 1.6;
+    color: var(--orange-color);
+    font-size: 1.1rem;
+}
+.menu .row{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 3.5rem;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 3.5rem;
+}
+.menu-card{
+    width: 20%;
+    text-align: center;
+    cursor: pointer;
+}
+.menu .row .menu-card img{
+    border-radius: 50%;
+    width: 80%;
+}
+.menu .row .menu-card .menu-card-title{
+    margin: 1rem auto 0.5rem;
+}
+
+
+/* Tentang Kami */
+.tentang{
+    padding: 7rem 4% 1.4rem;
+}
+.tentang h2{
+    text-align: center;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+.tentang h2 span{
+    color: var(--orange-color);
+}
+.tentang .row{
+    display: flex;
+}
+.tentang .row .tentang-img{
+    flex: 1 10 44rem;
+}
+.tentang .row .tentang-img img{
+    width: 95%;
+    height: 100%;
+}
+.tentang .row .content{
+    flex: 1 10 35rem;
+    padding: 0 0rem;
+    text-align: justify;
+}
+.tentang .row .content h3{
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    margin-top: 0.8rem;
+    color: var(--orange-color);
+}
+.tentang .row .content p{
+    margin-bottom: 0.8rem;
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+/* Tim Manajemen */
+.tim{
+    padding: 2rem 4% 1.4rem;
+}
+.tim .heading{
+    text-align: center;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+.tim .sub-heading{
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--orange-color);
+}
+.our-tim{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(30rem,1fr));
+    grid-gap: 1.5rem;
+}
+.our-tim .item .image img{
+    width: 100%;
+}
+.our-tim .item{
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+}
+.our-tim .item:before{
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    display: none;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, .5);
+    z-index: 5;
+}
+.our-tim .item:hover.item:before{
+    display: block;
+}
+.our-tim .item .tim-info{
+    position: absolute;
+    top: 130%;
+    left: 0; right: 0; bottom: 0;
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+    align-items: center;
+    transition: 1s;
+    cursor: pointer;
+}
+.our-tim .item .tim-info h3{
+    font-size: 1.7rem;
+    color: var(--white-color);
+    padding: .8rem 0;
+    text-transform: uppercase;
+}
+.our-tim .item .tim-info span{
+    font-size: 1.7rem;
+    color: var(--orange-color);
+    letter-spacing: 1px;
+    font-weight: 400;
+}
+.our-tim .item .tim-info ul{
+    list-style: none;
+    display: flex;
+    grid-gap: 2rem;
+    padding: 3rem 0;
+    justify-content: center;
+}
+.our-tim .item .tim-info ul li a{
+    color: var(--white-color);
+    font-size: 1.8rem;
+}
+.our-tim .item:hover .tim-info{
+    top: 0;
+}
+
+
+/* Kontak */
+.kontak{
+    padding: 7rem 7% 1.4rem;
+}
+.kontak h2{
+    text-align: center;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+.kontak h2 span{
+    color: var(--orange-color);
+}
+.kontak h3{
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--orange-color);
+}
+.kontak .row{
+    display: flex;
+    margin-top: 2rem;
+    background-color: var(--gray-color);
+    flex-wrap: wrap;
+}
+.kontak .row .map{
+    flex: 1 1 45rem;
+    width: 100%;
+    object-fit: cover;
+}
+.kontak .row form{
+    flex: 1 1 45rem;
+    padding: 3rem 2rem;
+    text-align: center;
+}
+.kontak .row form .input-group{
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+    background-color: var(--navy-color);
+    border: 1px solid var(--white-color);
+    padding-left: 2rem;
+}
+.kontak .row form .input-group input{
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.5rem;
+    background: none;
+    color: var(--white-color);
+}
+.kontak .row form .input-group textarea{
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.5rem;
+    background: none;
+    color: var(--white-color);
+    resize: vertical;
+    overflow: hidden;
+}
+.kontak .row form .btn{
+    margin-top: 3rem;
+    display: inline-block;
+    padding: 1rem 3rem;
+    font-size: 1.7rem;
+    color: var(--navy-color);
+    background-color: var(--white-color);
+    cursor: pointer;
+    border: 1px solid var(--navy-color);
+}
+.kontak .row form .btn:hover{
+    background-color: var(--navy-color);
+    color: var(--white-color);
+    border: 1px solid var(--white-color);
+}
+
+
+/* Footer */
+footer{
+    position: fixed;
+    bottom: 0;
+}
+
+@media (max-height:800px) {
+    footer {
+        position: static;
+    }
+    header {
+        padding-top: 40px;
+    }
+}
+
+.footer-distributed {
+    background-color: var(--black-color);
+    box-sizing: border-box;
+    width: 100%;
+    text-align: left;
+    font: bold 16px 'Saira';
+    padding: 50px 50px 60px 50px;
+    margin-top: 80px;
+}
+.footer-distributed .footer-left, .footer-distributed .footer-center, .footer-distributed .footer-right {
+    display: inline-block;
+    vertical-align: top;
+}
+
+/* Footer left */
+.footer-distributed .footer-left {
+    width: 30%;
+}
+.footer-distributed h3 {
+    color: var(--white-color);
+    font: normal 36px 'Saira', cursive;
+    margin: 0;
+    font-style: italic;
+}
+.footer-distributed h3 span {
+    color: var(--orange-color);
+}
+
+/* Footer links */
+.footer-distributed .footer-links {
+    color: var(--white-color);
+    margin: 20px 0 12px;
+}
+.footer-distributed .footer-links a {
+    display: inline-block;
+    line-height: 1.8;
+    text-decoration: none;
+    color: inherit;
+    font-weight: 300;
+}
+.footer-distributed .footer-links a:hover{
+    color: var(--orange-color);
+}
+.footer-distributed .footer-company-name {
+    color: #8f9296;
+    font-size: 14px;
+    font-weight: normal;
+    margin: 0;
+}
+
+/* Footer Center */
+.footer-distributed .footer-center {
+    width: 35%;
+}
+.footer-distributed .footer-center i {
+    background-color: #33383b;
+    color: #ffffff;
+    font-size: 25px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 42px;
+    margin: 10px 15px;
+    vertical-align: middle;
+}
+.footer-distributed .footer-center i.fa-envelope {
+    font-size: 17px;
+    line-height: 38px;
+}
+.footer-distributed .footer-center p {
+    display: inline-block;
+    color: #ffffff;
+    vertical-align: middle;
+    margin: 0;
+}
+.footer-distributed .footer-center p span {
+    display: block;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 2;
+}
+.footer-distributed .footer-center p a {
+    color: var(--orange-color);
+    text-decoration: none;
+    ;
+}
+
+/* Footer Right */
+.footer-distributed .footer-right {
+    width: 30%;
+}
+.footer-distributed .footer-company-about {
+    line-height: 20px;
+    color: #92999f;
+    font-size: 13px;
+    font-weight: normal;
+    margin: 0;
+}
+.footer-distributed .footer-company-about span {
+    display: block;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.footer-distributed .footer-icons {
+    margin-top: 25px;
+}
+.footer-distributed .footer-icons i {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    background-color: var(--orange-color);
+    border-radius: 2px;
+    font-size: 20px;
+    color: var(--black-color);
+    text-align: center;
+    line-height: 35px;
+    margin-right: 3px;
+    margin-bottom: 5px;
+}
+.footer-distributed .footer-icons i:hover {
+    background-color: var(--white-color);
+}
+.footer-links a:hover {
+    color: var(--white-color);
+}
+.footer-icons{
+    display: flex;
+}
+.footer-icons i{
+    margin: 10px;
+}
+
+@media (max-width: 880px) {
+    .footer-distributed .footer-left, .footer-distributed .footer-center, .footer-distributed .footer-right {
+        display: block;
+        width: 100%;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+    .footer-distributed .footer-center i {
+        margin-left: 0;
+    }
+}       
